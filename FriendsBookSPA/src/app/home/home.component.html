@@ -1,0 +1,33 @@
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <div *ngIf="!loggedIn(); else elseBlock">
+      <h1>Find your Friends!</h1>
+      <p class="lead">Come on in to view your friends. Connect with new friends... All you need to do is sign up!</p>
+      <div *ngIf="!loggedIn(); else elseBlock" class="text-center">
+        <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
+        <button class="btn btn-info btn-lg" [routerLink]="['/learnmore']">Learn more</button>
+      </div>
+      <div *ngIf="loggedIn()" class="text-center">
+        <button class="btn btn-primary btn-lg mr-2" [routerLink]="['/members']">Find Friends</button>
+        <button class="btn btn-info btn-lg" [routerLink]="['/messages']">Check Message</button>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <h1>Welcome to Friends Book</h1>
+      <p class="lead">Come on in to view your friends. Connect with new friends... Roam around to get more friends!</p>
+      
+      <div class="text-center">
+        <button class="btn btn-primary btn-lg mr-2" [routerLink]="['/members']">Find Friends</button>
+        <button class="btn btn-info btn-lg" [routerLink]="['/messages']">Check Message</button>
+      </div>
+    </ng-template>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+</div>
