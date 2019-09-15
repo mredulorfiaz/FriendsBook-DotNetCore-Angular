@@ -5,7 +5,7 @@ import { User } from './_models/user';
 
 @Component({
   selector: 'app-root',
-  template: `<ngx-loading-bar></ngx-loading-bar>`,
+  // template: `<ngx-loading-bar height="5px" diameter="20px"></ngx-loading-bar>`,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']  
 })

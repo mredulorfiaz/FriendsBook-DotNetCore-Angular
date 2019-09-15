@@ -10,6 +10,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { FileUploadModule } from 'ng2-file-upload';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -77,6 +78,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     LearnmoreComponent
   ],
   imports: [
+    LoadingBarRouterModule,
     NgxUiLoaderModule,
     BrowserModule,
     BrowserAnimationsModule,
