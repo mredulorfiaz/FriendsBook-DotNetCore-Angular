@@ -1,10 +1,10 @@
 [
     {
-      "Username": "Lola",
-      "Gender": "female",
+      "Username": "Orfiaj",
+      "Gender": "male",
       "DateOfBirth": "1994-02-21",
       "Password": "password",
-      "KnownAs": "Lola",
+      "KnownAs": "Orfiaj",
       "Created": "2017-08-02",
       "LastActive": "2017-08-02",
       "Introduction": "Nulla excepteur sit anim ex do qui laboris officia eiusmod ut incididunt. Enim occaecat sint dolor esse et enim. Ad cupidatat exercitation ea id eiusmod nostrud amet Lorem sint. Laboris cupidatat aute dolor ad eu tempor elit ea tempor quis et. Lorem eiusmod commodo cillum id aute nisi fugiat. Aute laborum tempor ullamco elit exercitation veniam commodo elit dolor.\r\n",
@@ -14,7 +14,7 @@
       "Country": "Burundi",
       "Photos": [
         {
-          "url": "https://randomuser.me/api/portraits/women/3.jpg",
+          "url": "https://randomuser.me/api/portraits/men/3.jpg",
           "isMain": true,
           "description": "Non deserunt labore sunt ex laboris et adipisicing ullamco officia minim."
         }
