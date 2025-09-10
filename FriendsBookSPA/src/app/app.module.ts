@@ -3,14 +3,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, ModalModule } from 'ngx-bootstrap';
+// import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, ModalModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgxGalleryModule } from 'ngx-gallery';
-import { FileUploadModule } from 'ng2-file-upload';
-import {TimeAgoPipe} from 'time-ago-pipe';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
-import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+// import { NgxGalleryModule } from 'ngx-gallery';
+// import { FileUploadModule } from 'ng2-file-upload';
+// import {TimeAgoPipe} from 'time-ago-pipe';
+// import { NgxUiLoaderModule } from 'ngx-ui-loader';
+// import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -68,7 +68,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
-    TimeAgoPipe,
+    // TimeAgoPipe,
     MemberMessagesComponent,
     AdminPanelComponent,
     HasRoleDirective,
@@ -78,27 +78,27 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     LearnmoreComponent
   ],
   imports: [
-    LoadingBarRouterModule,
-    NgxUiLoaderModule,
+    // LoadingBarRouterModule,
+    // NgxUiLoaderModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    ButtonsModule.forRoot(),
-    PaginationModule.forRoot(),
-    TabsModule.forRoot(),
+    // BsDropdownModule.forRoot(),
+    // BsDatepickerModule.forRoot(),
+    // ButtonsModule.forRoot(),
+    // PaginationModule.forRoot(),
+    // TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    ModalModule.forRoot(),
-    NgxGalleryModule,
-    FileUploadModule,
+    // ModalModule.forRoot(),
+    // NgxGalleryModule,
+    // FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ['localhost:5000'],
-        blacklistedRoutes: ['localhost:5000/api/auth']
+        allowedDomains: ['localhost:5000'],
+        disallowedRoutes: ['localhost:5000/api/auth']
       }
     })
   ],
