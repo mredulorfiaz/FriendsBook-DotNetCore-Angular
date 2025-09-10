@@ -1,6 +1,6 @@
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { BsDropdownModule, TabsModule, BsDatepickerModule, PaginationModule, ButtonsModule, ModalModule } from 'ngx-bootstrap';
@@ -26,22 +26,22 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
 import { MemberCardComponent } from './members/member-card/member-card.component';
-import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+// import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
-import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+// import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { MessagesResolver } from './_resolvers/messages.resolver';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { HasRoleDirective } from './_directives/hasRole.directive';
-import { UserManagementComponent } from './admin/user-management/user-management.component';
+// import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { AdminService } from './_services/admin.service';
-import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+// import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 import { LearnmoreComponent } from './learnmore/learnmore.component';
 
 export function tokenGetter() {
@@ -65,16 +65,16 @@ export class CustomHammerConfig extends HammerGestureConfig  {
     ListsComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent,
+    // MemberDetailComponent,  // Uses ngx-gallery
     MemberEditComponent,
-    PhotoEditorComponent,
+    // PhotoEditorComponent,   // Uses ng2-file-upload
     // TimeAgoPipe,
     MemberMessagesComponent,
     AdminPanelComponent,
     HasRoleDirective,
-    UserManagementComponent,
+    // UserManagementComponent, // Uses ngx-bootstrap
     PhotoManagementComponent,
-    RolesModalComponent,
+    // RolesModalComponent,    // Uses ngx-bootstrap
     LearnmoreComponent
   ],
   imports: [
@@ -117,9 +117,7 @@ export class CustomHammerConfig extends HammerGestureConfig  {
       AdminService,
       { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
     ],
-  entryComponents: [
-    RolesModalComponent
-  ],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
