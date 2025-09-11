@@ -1,0 +1,21 @@
+# Development Dockerfile for .NET API with hot reload
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+WORKDIR /app
+
+# Install dotnet-ef tool for migrations
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Copy csproj and restore dependencies
+COPY *.csproj ./
+RUN dotnet restore
+
+# Expose port 5000
+EXPOSE 5000
+
+# Set environment variables
+ENV ASPNETCORE_URLS=http://+:5000
+ENV ASPNETCORE_ENVIRONMENT=Development
+
+# Use dotnet watch for hot reload
+CMD ["dotnet", "watch", "run", "--urls", "http://0.0.0.0:5000"]
