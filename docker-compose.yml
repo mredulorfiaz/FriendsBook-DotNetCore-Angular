@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  friendsbook-db:
+    image: mysql:8.0
+    container_name: friendsbook-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: friendsbook123
+      MYSQL_DATABASE: friendsbook
+      MYSQL_USER: friendsbook
+      MYSQL_PASSWORD: friendsbook123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./FriendsBookAPI/mysql.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - friendsbook-network
+
+  # .NET API
+  friendsbook-api:
+    build:
+      context: ./FriendsBookAPI
+      dockerfile: Dockerfile
+    container_name: friendsbook-api
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=friendsbook-db;port=3306;database=friendsbook;uid=friendsbook;password=friendsbook123;
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      - friendsbook-db
+    networks:
+      - friendsbook-network
+    volumes:
+      - ./FriendsBookAPI:/app/source
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/values"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Angular SPA
+  friendsbook-spa:
+    build:
+      context: ./FriendsBookSPA
+      dockerfile: Dockerfile
+    container_name: friendsbook-spa
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    depends_on:
+      - friendsbook-api
+    networks:
+      - friendsbook-network
+    environment:
+      - API_URL=http://friendsbook-api:5000
+
+volumes:
+  mysql_data:
+
+networks:
+  friendsbook-network:
+    driver: bridge
